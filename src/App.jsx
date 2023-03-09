@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
 import './assets/Global.module.scss';
 import './index.css';
 import Banner from './components/Banner';
@@ -49,9 +48,9 @@ function App() {
 		},
 	]);
 
-	// function createEspecie(){
-	// 	setClasseAnimais([...classeAnimais,{id:uuidv4(), nome:}])
-	// }
+	function createEspecie({ nome, cor, id }) {
+		setClasseAnimais([...classeAnimais, { nome, cor, id }]);
+	}
 
 	return (
 		<div>
@@ -60,13 +59,16 @@ function App() {
 			nomes dos animais que é uma prop a ser utilizada na função Formulario, que
 			posteriormente será utilizada em ListaSuspensa --> Hierarquia props */}
 			<Formulario
-				classeAnimais={classeAnimais.map(classeAnimal => classeAnimal.nome)}
+				classeAnimais={classeAnimais.map(classeAnimal => {
+					classeAnimal.nome;
+				})}
+				aoCadastrarEspecie={createEspecie}
 			/>
 			<section className="especie-section">
-				<h2 className="sectionTitle">Espécies & Animais</h2>
-				<Section nome="Mamíferos" cor="#57C278" />
+				{classeAnimais.map(classe => (
+					<Section nome={classe.nome} cor={classe.cor} key={classe.id} />
+				))}
 			</section>
-			{/* */}
 			<Footer />
 		</div>
 	);
