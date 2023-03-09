@@ -5,8 +5,9 @@ import ListaSuspensa from '../ListaSuspensa';
 
 import styles from './Formulario.module.scss';
 
-const Formulario = ({ aoCadastrar, animais, cadastrarEspecie }) => {
+const Formulario = ({ aoCadastrar, classeAnimais, cadastrarEspecie }) => {
 	const [animal, setAnimal] = useState('');
+
 	const [raca, setRaca] = useState('');
 	const [imagem, setImagem] = useState('');
 	const [especie, setEspecie] = useState('');
@@ -51,7 +52,7 @@ const Formulario = ({ aoCadastrar, animais, cadastrarEspecie }) => {
 						label="Espécie"
 						value={especie}
 						aoAlterado={valor => setEspecie(valor)}
-						items={animais}
+						items={classeAnimais}
 					/>
 
 					<Botao texto="Criar card do animal informado" />
@@ -68,7 +69,7 @@ const Formulario = ({ aoCadastrar, animais, cadastrarEspecie }) => {
 						obrigatorio
 						type="color"
 						label={'Cor da seção'}
-						vaalue={corEspecie}
+						value={corEspecie}
 						aoAlterado={valor => setCorEspecie(valor)}
 					/>
 					<Botao texto="Criar nova seção para o animal" />

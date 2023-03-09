@@ -1,0 +1,11 @@
+.sectionTitle {
+	text-align: center;
+}
+
+.animalContainer {
+	display: flex;
+	justify-content: space-around;
+}
+.animalSection {
+	padding: 2rem 0;
+}
