@@ -3,7 +3,7 @@ import { useState } from 'react';
 import hexToRgba from 'hex-to-rgba';
 import AnimalCard from '../Animais';
 
-const Section = ({ animais, nome, cor }) => {
+const Section = ({ animais, nome, cor, aoDeletar }) => {
 	const [backgroundColor, setBackgroundColor] = useState(cor);
 
 	const mudarCorBg = e => {
@@ -18,33 +18,34 @@ const Section = ({ animais, nome, cor }) => {
 	const titleStyle = {
 		borderBottom: `4px solid ${backgroundColor}`,
 	};
-	console.log(animais);
+
 	return (
-		<section className="section" style={sectionStyle}>
-			<div className="upperContent">
-				<h3 style={titleStyle}>{nome}</h3>
-				<input
-					type="color"
-					value={backgroundColor}
-					onChange={mudarCorBg}
-					className="input-color"
-				/>
-			</div>
-			<div className="animaisContainer">
-				{animais.map((animal, index) => {
-					return (
-						<AnimalCard
-							nome={animal.nome}
-							image={animal.imagem}
-							desc={animal.desc}
-							corCabecalho={backgroundColor}
-							key={index}
-							favorito={false}
-						/>
-					);
-				})}
-			</div>
-		</section>
+		animais.length > 0 && (
+			<section className="section" style={sectionStyle}>
+				<div className="upperContent">
+					<h3 style={titleStyle}>{nome}</h3>
+					<input
+						type="color"
+						value={backgroundColor}
+						onChange={mudarCorBg}
+						className="input-color"
+					/>
+				</div>
+				<div className="animaisContainer">
+					{animais.map((animal, index) => {
+						return (
+							<AnimalCard
+								animal={animal}
+								corCabecalho={backgroundColor}
+								key={index}
+								favorito={false}
+								aoDeletar={aoDeletar}
+							/>
+						);
+					})}
+				</div>
+			</section>
+		)
 	);
 };
 

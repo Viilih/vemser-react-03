@@ -264,6 +264,10 @@ function App() {
 		setAnimais([...animais, { id, favorito, nome, desc, imagem, especie }]);
 	}
 
+	function removerAnimal(id) {
+		setAnimais(animais.filter(animal => animal.id !== id));
+	}
+
 	return (
 		<div>
 			<Banner />
@@ -287,6 +291,7 @@ function App() {
 						animais={animais.filter(animal => {
 							return animal.especie === classe.nome;
 						})}
+						aoDeletar={removerAnimal}
 					/>
 				))}
 			</section>

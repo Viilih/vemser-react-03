@@ -2,7 +2,7 @@ import './animais.css';
 import { AiFillCloseCircle, AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { useState } from 'react';
 
-const Animais = ({ favorito, nome, desc, image, corCabecalho }) => {
+const Animais = ({ animal, corCabecalho, favorito, aoDeletar }) => {
 	const cabecalhoCor = { backgroundColor: corCabecalho };
 	const [favoritado, setFavoritado] = useState(favorito);
 
@@ -10,17 +10,18 @@ const Animais = ({ favorito, nome, desc, image, corCabecalho }) => {
 		setFavoritado(!favoritado);
 	}
 
-	const deleteCard = () => {};
-
 	return (
 		<div className="animal">
 			<div className="cabecalho" style={cabecalhoCor}>
-				<AiFillCloseCircle className="deleteCard" />
-				<img src={image} alt={nome} />
+				<AiFillCloseCircle
+					className="deleteCard"
+					onClick={() => aoDeletar(animal.id)}
+				/>
+				<img src={animal.imagem} alt={animal.nome} />
 			</div>
 			<div className="rodape">
-				<h4>{nome}</h4>
-				<h5>{desc}</h5>
+				<h4>{animal.nome}</h4>
+				<h5>{animal.desc}</h5>
 				<div className="fav">
 					{favoritado ? (
 						<AiFillHeart
