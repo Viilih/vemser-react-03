@@ -15,8 +15,8 @@ const ListaSuspensa = ({ label, valor, aoAlterado, items, obrigatorio }) => {
 				{/* Opção vazia */}
 
 				{/* Para o array de opções recebido, ele cria um option para cada item do array */}
-				{items.map(item => (
-					<option key={item}>{item}</option>
+				{items.map((item, index) => (
+					<option key={index}>{item}</option>
 				))}
 			</select>
 		</div>
